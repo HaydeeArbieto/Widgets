@@ -1,0 +1,14 @@
+﻿@section scripts {
+    @Scripts.Render("~/bundles/viewmodels/widgets")
+
+    <script>
+        var viewModel = new WidgetsViewModel();
+        viewModel.loadWidgets().done(function () {
+            ko.applyBindings(viewModel);
+        });
+    </script>
+}
+<h2 id="widgetsTitel"> Widgets </h2>
+<ul style="list-style-type: none;" data-bind="foreach: Widgets">
+    <li><a data-bind="attr: { href: '/Widgets/' + WidgetId }"><strong data-bind="text: Name"></strong> (<span data-bind="text: Type"></span>)</a></li>
+</ul>

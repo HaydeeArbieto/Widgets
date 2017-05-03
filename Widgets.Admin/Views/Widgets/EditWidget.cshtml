@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = " Edit Widget - ";
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/viewmodels/widgets")
+
+    <script>
+        var viewModel = new WidgetsViewModel();
+        viewModel.loadWidget({ widgetId: '@ViewBag.WidgetId' }).done(function () {
+            ko.applyBindings(viewModel);
+        });
+    </script>
+}
+
+<div class="container">
+    <h2 id="editWidgetsTitel">Edit Widget </h2>
+    <br />
+    <form class="form-horizontal" id="EditWidgetsForm" data-bind="with: SelectedWidget">
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Name:</label>
+                <div class="col-sm-10">
+                    <input name="name" id="widgetsName" type="text" class="form-control" data-bind="value: Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2">Type:</label>
+                <div class="col-sm-2">
+                    <select name="type" id="widgetsType" class="form-control selcls" data-bind="value: Type">
+                        <option id="modal">Modal</option>
+                        <option id="banner">Banner</option>
+                        <option  id="callout">CallOut</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div data-bind="if: Type() == '@Widgets.Core.Models.WidgetType.Modal'">
+                    <label class="control-label col-sm-2">Modal properties:</label>
+                </div>
+
+                <div data-bind="if: Type() == '@Widgets.Core.Models.WidgetType.Banner'">
+                    <label class="control-label col-sm-2">Banner properties:</label>
+                </div>
+                
+                <div data-bind="if: Type() == '@Widgets.Core.Models.WidgetType.CallOut'">
+                    <label class="control-label col-sm-2">CallOut properties:</label>
+                </div>
+            </div>
+            <div id="properties">
+                <div id="formWidth" class="form-group">
+                    <label class="control-label col-sm-2">Css width:</label>
+                    <div class="col-sm-10">
+                        <input name="width" id="number" type="number" min="1" max="2000" value="400" size="1">
+                        <span> px &nbsp; </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label class="control-label col-sm-2">Css height:</label>
+                        <div id="divInputHeight" class="col-sm-10">
+                            <div class="input-group">
+                                <input name="height" id="heightInput" type="number" min="1" max="2000" value="400">
+                                <span class="input-group-addon">px</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-inline">
+                        <label class="control-label col-sm-2">Backdrops color:</label>
+                        <div class="col-sm-10">
+                            <div class="input-group">
+                                <div class="input-group-addon">rgba</div>
+                                <input name="backdropsCss" type="text" class="form-control" id="backdrops" placeholder="Enter backdrops color">
+                            </div>
+                            <div action="/action_page.php">
+                                <input type="color" name="favcolor" value="#F0FFFF">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Content Url:</label>
+                    <div class="col-sm-10">
+                        <input name="contentUrl" type="text" class="form-control" id="contentUrl" data-bind="value: ContentUrl" placeholder="Enter content Url">
+                    </div>
+                </div>
+            </div>
+            <!-- TRIGGERS -->
+            <div class="form-group">
+                <label class="control-label col-sm-2">Triggers:</label>
+                <br />
+                <div class="row">
+                    <table id="triggersTable">
+                        <thead>
+                            <tr bgcolor="#DCDCDC">
+                                <th>Type </th>
+                                <th>Pattern</th>
+                                <th>Time</th>
+                                <th>Scroll</th>
+                                <th>Delay</th>
+                                <th>Selector</th>
+                                <th id="triggersHeadspace">  </th>
+                            </tr>
+                        </thead>
+                        <tbody id="triggersTableB" data-bind="foreach: Triggers">
+                            <tr>
+                                <td>
+                                    <input name="type" data-bind="value: Type" size="12"
+                                           data-msg-required="The type field is required."
+                                           data-rule-required="true" />
+                                </td>
+                                <td data-bind="if: Type() == 'Url' || Type() == 'Referrer'">
+                                    <input name="type" data-bind="value: Pattern" size="30"
+                                           data-msg-required="The pattern field is required."
+                                           data-rule-required="true" />
+                                </td>
+                                <td>
+                                    <span data-bind="if: Type() == 'TimeOnPage' || Type() == 'TimeOnSite'">
+                                        <input id="number" type="number" min="1" max="60" value="1">
+                                        <span> seconds &nbsp; </span>
+                                    </span>
+
+                                </td>
+                                <td data-bind="if: Type() == 'Scroll'">
+                                    <select class="selectpicke">
+                                        <option>0 - 25</option>
+                                        <option>25 - 50</option>
+                                        <option>50 - 75</option>
+                                        <option>75 - 100</option>
+                                    </select> %
+                                </td>
+                                <td>
+                                    <input data-bind="value: Delay" size="1"
+                                           data-msg-required="The delay field is required."
+                                           data-rule-required="true" />
+                                </td>
+                                <td data-bind="if: Type() == 'ScrollIntoView'">
+                                    <input data-bind="value: Selector" size="8" />
+                                </td>
+                                <td><a href='#' data-bind="click: $root.deleteTrigger">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- RECURRENCES -->
+            <div class="form-group">
+                <label for="gender1" class="col-sm-2 control-label">Recurrences:</label>
+                <br />
+                <div class="col-sm-2">
+                    <table id="recurrencesTable">
+                        <thead>
+                            <tr bgcolor="#DCDCDC">
+                                <th>Type </th>
+                                <th>Date </th>
+                            </tr>
+                        </thead>
+                        <tbody id="recurrencesTableB" data-bind="foreach: Recurrences">
+                            <tr>
+                                <td>
+                                    <input name="type" data-bind="value: Type" size="12" />
+                                </td>
+                                <td data-bind="if: Type() == 'Expires'">
+                                    <div class="form-inline">
+                                        <div class="input-group">
+                                            <input id="number" type="number" min="1" max="31" value="1">
+                                            <span class="input-group-addon">days</span>
+                                        </div>
+
+                                    </div>
+                                </td>
+                                <td data-bind="if: Type() == 'Expires'">
+                                    <div class="input-group">
+                                        <input id="number" type="number" min="1" max="24" value="1">
+                                        <span class="input-group-addon">hours</span>
+                                    </div>
+                                </td>
+                                <td data-bind="if: Type() == 'Expires'">
+                                    <div class="input-group">
+                                        <input id="number" type="number" min="1" max="60" value="1">
+                                        <span class="input-group-addon">minutes</span>
+                                    </div>
+                                </td>
+                                <td data-bind="if: Type() == 'Expires'">
+                                    <div class="input-group">
+                                        <input id="number" type="number" min="1" max="60" value="1">
+                                        <span class="input-group-addon">seconds</span>
+                                    </div>
+                                </td>
+                                <td><a href='#' data-bind="click: $root.deleteRecurrence">Delete</a></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- AUDIENCES -->
+            <div class="form-group">
+                <label for="gender1" class="col-sm-2 control-label">Audiences:</label>
+                <br />
+                <div class="col-sm-2">
+                    <table id="audiencesTable">
+                        <thead>
+                            <tr bgcolor="#DCDCDC">
+                                <th>Type </th>
+                                <th>Pattern </th>
+                            </tr>
+                        </thead>
+                        <tbody id="audiencesTableB" data-bind="foreach: Audiences">
+                            <tr>
+                                <td>
+                                    <input name="type" data-bind="value: Type" size="12" />
+                                </td>
+                                <td data-bind="if: Type() == 'UserAgent'">
+                                    <input data-bind="value: Pattern" size="10" />
+                                </td>
+                                <td><a href='#' data-bind="click: $root.deleteAudience">Delete</a></td>
+                            </tr>
+                    </table>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div id="editWidgetsButtons" class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-default btn-md" data-bind="click: $root.saveWidget">Save</button> &emsp;
+                    <a class="btn btn-default btn-md" data-bind="attr: { href: '/Widgets/' }">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

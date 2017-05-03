@@ -1,0 +1,7 @@
+C:\Ungapped-Projects\Widgets\Widgets.Core\bin\Debug\Widgets.Core.dll
+C:\Ungapped-Projects\Widgets\Widgets.Core\bin\Debug\Widgets.Core.pdb
+C:\Ungapped-Projects\Widgets\Widgets.Core\obj\Debug\Widgets.Core.dll
+C:\Ungapped-Projects\Widgets\Widgets.Core\obj\Debug\Widgets.Core.pdb
+C:\Ungapped-Projects\Widgets\Widgets.Core\obj\Debug\Widgets.Core.csprojResolveAssemblyReference.cache
+C:\Ungapped-Projects\Widgets\Widgets.Core\bin\Debug\Newtonsoft.Json.dll
+C:\Ungapped-Projects\Widgets\Widgets.Core\bin\Debug\Newtonsoft.Json.xml

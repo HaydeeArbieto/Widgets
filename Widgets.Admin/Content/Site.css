@@ -1,0 +1,54 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+#widgetsTitel, #editWidgetsTitel{
+    text-align: center;
+}
+#editWidgetsButtons {
+    text-align: center;
+}
+#properties-- {
+    padding-left: 8.0em;
+
+}
+#contentUrl {
+    max-width: 480px;
+}
+#triggersTableB td, th{
+    padding: 6px;
+}
+#audiencesTableB td, th{
+    padding: 6px;
+}
+#recurrencesTableB td, th{
+    padding: 6px;
+}
+#divInputHeight {
+  width: 12%;
+}
+/*#triggerHeadSpace {
+  width: 10px;
+}*/
+

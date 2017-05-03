@@ -1,0 +1,5 @@
+C:\Ungapped-Projects\Widgets\Widgets\bin\Debug\Widgets.dacpac
+C:\Ungapped-Projects\Widgets\Widgets\bin\Debug\Widgets.dll
+C:\Ungapped-Projects\Widgets\Widgets\bin\Debug\Widgets.pdb
+C:\Ungapped-Projects\Widgets\Widgets\obj\Debug\Widgets.dll
+C:\Ungapped-Projects\Widgets\Widgets\obj\Debug\Widgets.pdb

@@ -1,0 +1,9 @@
+C:\Ungapped-Projects\Widgets\WidgetsDB\bin\Debug\WidgetsDB.dacpac
+C:\Ungapped-Projects\Widgets\WidgetsDB\bin\Debug\WidgetsDB.dll
+C:\Ungapped-Projects\Widgets\WidgetsDB\bin\Debug\WidgetsDB.pdb
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\Model.xml
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\refactor.xml
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\postdeploy.sql
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\predeploy.sql
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\WidgetsDB.dll
+C:\Ungapped-Projects\Widgets\WidgetsDB\obj\Debug\WidgetsDB.pdb
